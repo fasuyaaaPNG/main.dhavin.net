@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiple Glow Effects Button</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Tailwind CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Additional CSS for the glow effect -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://codepen.io/simeydotme/pen/JjVgPVg/cf6bd78bc35895cfde263b6098003c0b.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-gray-900 text-white">
+
+<main id="app" class="flex flex-col items-center justify-center min-h-screen">
+
+  <!-- Button with glow effects -->
+  <button id="glowButton" class="relative py-2 px-6 mb-8 text-lg font-bold text-white rounded-lg bg-blue-400 hover:bg-pink-300 hover:text-white transition-all duration-300" data-effect="flicker">
+    <span class="text">Hover me, and surf to my domain!</span>
+    <span class="shimmer"></span>
+  </button>
+
+  <!-- Radio buttons for selecting effects -->
+  <section class="selection flex space-x-4">
+    <label class="flex items-center space-x-2">
+      <input type="radio" name="style" value="spin" class="form-radio text-blue-600 checked:text-pink-300">
+      <span class="text-white">dhavin.net</span>
+    </label>
+    <label class="flex items-center space-x-2">
+      <input type="radio" name="style" value="wave" class="form-radio text-blue-600">
+      <span class="text-white">info.dhavin.net</span>
+    </label>
+    <!-- <label class="flex items-center space-x-2">
+      <input type="radio" name="style" value="flicker" checked class="form-radio text-blue-600">
+      <span>Flicker</span>
+    </label>
+    <label class="flex items-center space-x-2">
+      <input type="radio" name="style" value="wave" class="form-radio text-blue-600">
+      <span>Wave</span>
+    </label>
+    <label class="flex items-center space-x-2">
+      <input type="radio" name="style" value="throb" class="form-radio text-blue-600">
+      <span>Throb</span>
+    </label>
+    <label class="flex items-center space-x-2">
+      <input type="radio" name="style" value="pulse" class="form-radio text-blue-600">
+      <span>Pulse</span>
+    </label> -->
+  </section>
+
+  <!-- Attribution link -->
+  <p class="mt-8 text-gray-500">Wellcome to <a href="https://codepen.io/simeydotme/pen/GRzVKqr" target="_blank" class="text-blue-400 underline">Dhavin Domain Linktree</a></p>
+</main>
+
+<!-- Social icons -->
+<div class="flex space-x-4 mt-8">
+  <a class="social-icon codepen text-gray-500 hover:text-pink-300" href="https://github.com/fasuyaaaPNG">
+    0x630x690x650x650x650x200x640x690x640x650x630x6f0x640x650x200x790x610x3f
+  </a>
+</div>
+<script src="./script.js"></script>
+<script>
+    const glowButton = document.getElementById('glowButton');
+    const effectRadios = document.querySelectorAll('input[name="style"]');
+    let hoverTimer;
+    window.onload = () => {
+        document.querySelectorAll('input[name="style"]').forEach(radio => radio.checked = false);
+    };
+
+    function checkAndOpenLink() {
+      const selectedEffect = document.querySelector('input[name="style"]:checked');
+
+      if (selectedEffect) {
+        if (selectedEffect.value === "spin") {
+          window.open("http://dhavin.net", "_blank");
+        } else if (selectedEffect.value === "wave") {
+          window.open("http://info.dhavin.net", "_blank");
+        }
+      } else {
+        alert("Please select an domain before hovering over the button!");
+      }
+    }
+
+    glowButton.addEventListener("mouseenter", () => {
+      hoverTimer = setTimeout(checkAndOpenLink, 1000);
+    });
+
+    glowButton.addEventListener("mouseleave", () => {
+      clearTimeout(hoverTimer);
+    });
+</script>
+</body>
+</html>
+</body>
+</html>
